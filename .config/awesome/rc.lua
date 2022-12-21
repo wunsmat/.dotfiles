@@ -110,7 +110,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget.textclock("%m/%d/%Y %I:%M%p")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -203,21 +203,20 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Add widgets to the wibox
     s.mywibox:setup {
-        layout = wibox.layout.align.horizontal,
+        layout = wibox.layout.stack,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-            mylauncher,
+            -- mylauncher,
             s.mytaglist,
             s.mypromptbox,
         },
-        s.mytasklist, -- Middle widget
-        { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-         -- mykeyboardlayout,
-            wibox.widget.systray(),
+        -- Middle widget
+        {
             mytextclock,
-         -- s.mylayoutbox,
-        },
+            valign = "center",
+            halign = "center",
+            layout = wibox.container.place
+        }
     }
 end)
 -- }}}
@@ -314,7 +313,7 @@ globalkeys = gears.table.join(
         { description = "restore minimized", group = "client" }),
 
     -- Prompt
-    awful.key({ modkey }, "r", function() awful.util.spawn_with_shell("dmenu_run") end,
+    awful.key({ modkey }, "r", function() awful.util.spawn_with_shell("rofi -show drun") end,
         { description = "run prompt", group = "launcher" }),
 
     awful.key({ modkey }, "x",
@@ -328,7 +327,7 @@ globalkeys = gears.table.join(
         end,
         { description = "lua execute prompt", group = "awesome" }),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
+    awful.key({ modkey }, "p", function() awful.util.spawn_with_shell("rofi -show p -modi p:rofi-power-menu -no-fixed-num-lines -theme-str 'window {width: 15%;}'") end,
         { description = "show the menubar", group = "launcher" })
 )
 

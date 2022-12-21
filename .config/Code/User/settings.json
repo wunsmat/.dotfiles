@@ -3,4 +3,6 @@
     "Lua.telemetry.enable": false,
     "editor.fontFamily": "FiraCode Nerd Font",
     "editor.fontLigatures": true,
+    "workbench.colorTheme": "Dracula",
+    "window.titleBarStyle": "custom",
 }
