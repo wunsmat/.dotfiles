@@ -5,4 +5,11 @@
     "editor.fontLigatures": true,
     "workbench.colorTheme": "Dracula",
     "window.titleBarStyle": "custom",
+    "hexeditor.columnWidth": 16,
+    "hexeditor.showDecodedText": false,
+    "hexeditor.defaultEndianness": "little",
+    "hexeditor.inspectorType": "aside",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
 }
